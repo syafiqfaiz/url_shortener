@@ -5,7 +5,7 @@
   <form action='/link/shorten' method='post' >
     Url: <input type="text" value="<%= @incorrect_url %>" name="original_link">
     <input type='submit' name="Make it shorter!!">
-
+    <br>
     <% unless @incorrect_url.class == nil %>
     Invalid Url
     <%end%>
