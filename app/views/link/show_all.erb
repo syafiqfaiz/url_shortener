@@ -1,0 +1,38 @@
+
+<div class="CSSTableGenerator" >
+                <table >
+                    <tr>
+                        <td>
+                            ID
+                        </td>
+                        <td >
+                            Original Url
+                        </td>
+                        <td>
+                            Shortened Url
+                        </td>
+                        <td>
+                            Visitor Counter
+                        </td>
+                    </tr>
+                    <% @all_link.each do |u| %>
+
+
+
+                    <tr>
+                        <td >
+                            <%=u.id%>
+                        </td>
+                        <td>
+                            <%=u.original_link%>
+                        </td>
+                        <td>
+                            <%=u.shortened_link%>
+                        </td>
+                        <td>
+                            <%=u.visitor_counter%>
+                        </td>
+                    </tr>
+                    <%end%>
+                </table>
+</div>

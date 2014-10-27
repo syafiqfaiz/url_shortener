@@ -1,8 +1,18 @@
 <div class="container">
+<center>
   <h1>Welcome to Url Shortener</h1>
-  <form action='/url/shorten' method='post' >
-    Url: <input type="text" name="original_url">
+
+  <form action='/link/shorten' method='post' >
+    Url: <input type="text" value="<%= @incorrect_url %>" name="original_link">
     <input type='submit' name="Make it shorter!!">
+
+    <% unless @incorrect_url.class == nil %>
+    Invalid Url
+    <%end%>
   </form>
 
+<br><hr>
+<a href='/posts/new'>See all links.</a></center>
 </div>
+
+
