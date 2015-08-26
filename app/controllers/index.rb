@@ -1,5 +1,6 @@
 get '/' do
   # Look in app/views/index.erb
+  @links = Link.all
   erb :index
 end
 
@@ -10,9 +11,10 @@ post  '/link/shorten' do
     u.shortened_link = "short/#{u.id}"
     u.save
 
-    redirect "/link/all"
+    u.to_json
   else
-    redirect to ("/#{params[:original_link]}")
+    error = "Not a url"
+    error.to_json
   end
 end
 

@@ -2,17 +2,37 @@
 <center>
   <h1>Welcome to Url Shortener</h1>
 
-  <form action='/link/shorten' method='post' >
+  <form action='/link/shorten' method='post' id='urlForm'>
     Url: <input type="text" value="<%= @incorrect_url %>" name="original_link">
     <input type='submit' name="Make it shorter!!">
     <br>
-    <% unless @incorrect_url.class == nil %>
-    Invalid Url
-    <%end%>
+
   </form>
 
 <br><hr>
-<a href='/posts/new'>See all links.</a></center>
+<div class="shortenedLink">
+	<ul id="link">
+		<% @links.each do |link| %>
+			<li><%= link.original_link %></li>
+		<% end %>
+	</ul>
 </div>
+</div>
+
+
+<script>
+	$("form#urlForm").submit(function(e){
+		e.preventDefault();
+		$.ajax({
+			method: "post",
+			url: $(this).attr('action'),
+			data: $(this).serialize()
+		}).done(function(response){
+		 	var data = JSON.parse(response)
+		 	var string = "<li>" + data.original_link + "</li>"
+			$('ul#link').append(string);
+		 })
+	})
+</script>
 
 
